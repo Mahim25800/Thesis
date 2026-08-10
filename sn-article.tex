@@ -1,0 +1,427 @@
+\documentclass[sn-mathphys-num,Numbered]{sn-jnl}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption}
+\captionsetup{font=small}
+
+\begin{document}
+
+\title{Cross-Generator Physical-Consistency Modeling for Generalizable AI-Generated Image Detection: A Systematic Literature Review}
+
+\author[1]{\fnm{MD Sakib} \sur{Hasan}}\email{23-50316-1@student.aiub.edu}
+\author[2]{\fnm{Mostofa} \sur{Seum}}\email{23-50299-1@student.aiub.edu}
+\author[3]{\fnm{Meer} \sur{Mursalin}}\email{23-50298-1@student.aiub.edu}
+\author[4]{\fnm{Sabbir} \sur{Hossain}}\email{23-50308-1@student.aiub.edu}
+
+\affil[1]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50316-1}}
+\affil[2]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50299-1}}
+\affil[3]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50298-1}}
+\affil[4]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50308-1}}
+
+\abstract{
+Deepfake and AI-generated image (AIGI) detectors that exploit generator-specific low-level fingerprints—such as pixel, noise, or frequency artifacts—exhibit severe generalization failures when evaluated on previously unseen generator families, with area-under-the-curve (AUC) often approaching chance on recent diffusion and hybrid models including Flux.1, Stable Diffusion 3, and MidJourney v6. We conduct a structured search and eligibility screening of the contemporary literature and organize the resulting body of work into nine thematic clusters: low-level artifact detectors, foundation-model and vision-language semantic detectors, physics- and scene-consistency methods, explainable and multimodal-large-language-model (MLLM) detectors, face-specific deepfake detectors, benchmarks and datasets, robustness and bias evaluations, audio-visual fusion detectors, and diffusion-model-specific studies. Across these clusters, approaches that implicitly memorize generator-dependent statistical signatures consistently show poor cross-generator robustness, whereas methods grounded in pretrained semantic representations (e.g., CLIP-based feature reuse) or in physically motivated scene cues (illumination, reflectance, geometry) achieve substantially stronger performance under domain shift. At the same time, physics-based and multi-cue scene-consistency detectors remain markedly underrepresented relative to semantic and fingerprint-based methods, leaving a critical gap in generator-agnostic AIGI detection. To address this gap, we outline a framework that fuses light and shadow, surface-normal, depth, and geometry signals via cross-attention, trained on older-generation data (Domain A) and evaluated zero-shot on unseen 2024–2026 generators (Domain B), thereby providing a principled pathway toward more robust, physically grounded, and generator-agnostic deepfake and AIGI detection in rapidly evolving model ecosystems.
+}
+
+\keywords{Deepfake detection, AI-generated image detection, multimodal fusion, cross-generator generalization, physics-based forensics, image forgery, synthetic media}
+
+\maketitle
+
+\section{Introduction}
+
+Generative models have got a lot better in recent years, with platforms like generative adversarial networks (GANs), diffusion models, and, more recently, large-scale text-to-image systems such as Stable Diffusion 3, Flux.1, MidJourney v6 and DALL-E 3 making the generation of photorealistic synthetic imagery widely accessible. What was once a capability confined to specialized research labs is now available to anyone with a text prompt and an internet connection, and the visual quality of the output has advanced to the point where synthetic images routinely pass casual human inspection. This accessibility has understandably raised concerns across domains as varied as journalism, digital forensics, legal evidence, and public discourse, where the ability to distinguish authentic from synthetic imagery has direct real-world consequences.
+
+Along with these advances in generative models, researchers in digital forensics have proposed numerous detection techniques. These range from early frequency-domain artifact detectors designed for GAN outputs, to deep convolutional classifiers trained end-to-end on labeled real or fake datasets, to more recent approaches that attempt to model semantic or physical inconsistencies in an image. Despite this proliferation of techniques, the field has struggled to converge on solutions that generalize outside the narrow conditions under which they were developed. The majority of these methods are evaluated only on the generator families represented in their training data, and comparatively few studies rigorously test performance against generator architectures the detector has never encountered.
+
+The primary bottleneck in current detection systems lies in their inability to generalize. Detectors trained on one class of generators (for example, GAN-based models such as StyleGAN or early diffusion models such as Stable Diffusion 1.x) often experience severe performance degradation when evaluated on images produced by structurally different and more recent generator families. In many cases, performance drops to near-random levels, with AUC values approaching 0.5. This is a particularly troubling result, as it implies that a detector's reported accuracy may reflect little more than its familiarity with a specific generator's fingerprint rather than any genuine understanding of what separates real images from synthetic ones. This phenomenon, referred to here as the cross-generator generalization problem, is consistently identified as one of the most significant unresolved challenges in AI-generated image and deepfake detection, which forms the central problem this review seeks to characterize and address.
+
+This gap is further widened by the speed with which modern architectures iterate. By the time a detector has been trained, validated, and published against a given generator family, that family has often already been superseded by newer models with different underlying noise distributions, sampling procedures, and artifact signatures. This creates a persistent lag between detection capability and generative capability and suggests that the field's reliance on generator-specific statistical cues, rather than more fundamental, generator-agnostic signals, may be a structural limitation rather than a temporary one. Figure~\ref{fig:timeline} illustrates this technology-evolution timeline, visually demonstrating the rapid shift from early artifact detectors toward physics-grounded fusion and zero-shot cross-generator evaluation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 1.png}
+\caption{\textbf{Technology-evolution timeline.} The reviewed corpus occupies the right-hand frontier, where the generative explosion necessitates a shift from early artifact detectors toward physics-grounded fusion and zero-shot cross-generator evaluation.}
+\label{fig:timeline}
+\end{figure}
+\FloatBarrier
+
+\subsection{Objectives}
+To systematically address these challenges and map the current state of the field, this paper makes the following contributions:
+\begin{itemize}
+\item \textbf{Methodological Taxonomy:} We organize the existing and highly fragmented technical approaches for AI-generated image and deepfake detection into a set of coherent methodological families, providing a structured lens through which disparate techniques can be compared on equal footing.
+
+\item \textbf{Generalization Analysis:} We examine which of these families show strong empirical generalization to unseen generators and which remain highly vulnerable to performance collapse under domain shift, drawing on cross-dataset and cross-generator evaluation results reported across the literature.
+
+\item \textbf{Physical-Consistency Evaluation:} We assess the extent to which prior work leverages physical-consistency cues, such as lighting, shadow, reflectance, geometry, depth, and anatomical plausibility, as generator-agnostic detection signals compared with traditional statistical approaches, and we consider why such cues may be more robust to the rapid architectural turnover described above.
+
+\item \textbf{Architectural Gap Identification:} Based on the limitations observed in existing detectors, we identify a specific and evidence-based gap that motivates a new multi-head, physics-grounded, cross-attention detection architecture, capable of jointly reasoning over statistical and physical evidence rather than relying on either in isolation.
+\end{itemize}
+
+\section{Methods}
+This review follows a structured systematic-review methodology -- explicit eligibility criteria, a documented search strategy, multi-reviewer screening, and thematic narrative synthesis -- informed by established systematic-review reporting guidance \cite{Page2021}. No formal review protocol was pre-registered in an external registry (e.g., PROSPERO); this is disclosed as a limitation in Section~\ref{sec:discussion}.
+
+\subsection{Eligibility Criteria}
+\textbf{Inclusion criteria:} (i) peer-reviewed conference/journal papers, arXiv preprints, or dataset/benchmark papers whose primary contribution is a method, dataset, or empirical evaluation for detecting AI-generated or manipulated (deepfake) images, video, or audio-visual content; (ii) publications reporting a proposed detection architecture, a training/evaluation protocol, a benchmark dataset, or a systematic robustness/bias analysis of existing detectors; (iii) publications in English with an accessible abstract or full text.
+
+\textbf{Exclusion criteria:} (i) records whose subject matter is generative modeling or a general-purpose technique with no forgery-detection application (e.g., a foundation language model or a general 3D-reconstruction method) were excluded as off-topic; (ii) secondary literature (existing surveys/systematic reviews of deepfake detection) were excluded from the primary quantitative synthesis, since this review's unit of analysis is primary technical contributions -- these secondary reviews are instead discussed narratively in Section~\ref{sec:relatedreviews} as related work; (iii) exact duplicate records (the same paper appearing twice under a preprint and a published venue, or re-entered independently during corpus compilation) were removed, retaining a single record per unique study.
+
+\subsection{Information Sources}
+Candidate records were compiled from IEEE Xplore, the ACM Digital Library, the CVF Open Access repository (CVPR/ICCV/WACV proceedings), arXiv, Semantic Scholar, SpringerLink, MDPI journals, ScienceDirect, and Hugging Face dataset listings. The corpus was last compiled and screened in July 2026.
+
+\subsection{Search Strategy}
+Search terms combined the concept of synthetic/manipulated visual media with the concept of detection, e.g.\ (``deepfake'' OR ``AI-generated image'' OR ``synthetic image'' OR ``face forgery'') AND (``detection'' OR ``forensics'' OR ``generalization'' OR ``benchmark'' OR ``cross-domain''), together with generator- and cue-specific qualifiers (``diffusion'', ``GAN'', ``CLIP'', ``physics'', ``lighting'', ``shadow'', ``geometry'', ``frequency'', ``multimodal'', ``explainable''). No date filter was applied; retrieved records span 2017--2026, reflecting both foundational forensic-vision techniques and the most recent generator-detector arms race.
+
+\subsection{Selection Process}
+The four authors jointly screened all compiled records. Records were divided among the team for an initial independent title/abstract screening pass, after which each record's inclusion/exclusion decision was cross-checked by at least one other team member against the eligibility criteria; disagreements were resolved by team discussion until consensus was reached. The same four-author team then independently assessed the remaining records at full-text level, again resolving any disagreement by discussion. A second-pass consistency check was performed collaboratively to identify duplicate records (matched by normalized title and, where available, DOI/arXiv identifier) prior to eligibility screening. No automation tools beyond spreadsheet-based deduplication were used.
+
+\subsection{Data Collection Process and Data Items}
+For each included record the following items were extracted into a structured spreadsheet: title, author(s), source link, DOI (where available), a description of the core method/approach, a summary of the paper's stated contribution, and the limitations or open gaps the paper itself reports. These items directly populate the synthesis tables in Section~\ref{sec:results}.
+
+\subsection{Risk of Bias and Certainty Assessment}
+Because the included studies are heterogeneous machine-learning method papers rather than clinical trials, a formal tool such as RoB-2 or ROBINS-I was not applicable. Instead, each study was qualitatively appraised for: (a) whether evaluation included \emph{cross-generator} or \emph{cross-dataset} testing (as opposed to only in-domain testing), (b) dataset scale and diversity, and (c) whether the paper's own stated limitations concern generalization. This appraisal is reflected in the ``Reported Gap / Limitation'' column of Tables~\ref{tab:frequency_spatial}--\ref{tab:diffusion_specific}. Publication/reporting bias was not formally quantified (e.g., no funnel plot), since the outcome of interest (cross-generator AUC) is not uniformly reported across studies in a form amenable to meta-analysis; a narrative synthesis was therefore used in place of meta-analysis, consistent with standard systematic-review guidance for methodologically heterogeneous bodies of evidence.
+
+\subsection{Synthesis Methods}
+Included studies were grouped inductively into nine thematic clusters based on their dominant technical strategy (Section~\ref{sec:results}). Within each cluster, findings are synthesized narratively, with emphasis on (i) the mechanism exploited for detection and (ii) the generalization behavior and limitations the source study itself reports. No statistical meta-analysis (e.g., pooled AUC) was performed, because studies use non-overlapping evaluation datasets, metrics, and generator sets, making quantitative pooling unreliable.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Study Selection}
+Figure~\ref{fig:prisma} presents the study identification, screening, eligibility, and inclusion flow diagram. Compilation from the sources listed in Section~II-C yielded 72 candidate records. Four records were identified as exact duplicates and removed, leaving 68 records screened by title/abstract. Four more fell out at this stage as off-topic -- a foundation language model, a text-to-image generative-modeling paper, a multi-view 3D reflectance-capture method, and a human-perception study, none of which propose or evaluate an automated forgery-detection method, even though each sits close enough to the subject matter that it warranted a second look before exclusion. The remaining 64 reports were sought and assessed at full-text level; three of those were set aside as secondary reviews or surveys rather than primary studies and are instead picked up as related work in Section~\ref{sec:relatedreviews}. What remained after this narrowing was \textbf{61 included studies}, the basis for the thematic synthesis that follows.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 2.png}
+\caption{\textbf{PRISMA study flow.} Study identification, screening, eligibility, and inclusion flow diagram.}
+\label{fig:prisma}
+\end{figure}
+\FloatBarrier
+
+\subsection{Study Characteristics and Thematic Synthesis}
+The 61 included studies were grouped into nine thematic clusters, summarized in Table~\ref{tab:overview} and detailed in Tables~\ref{tab:frequency_spatial}--\ref{tab:diffusion_specific}. One thing worth flagging before turning to the individual clusters: the split is far from even. Low-level artifact detectors and face-specific detectors alone account for 26 of the 61 studies -- close to half the corpus -- while physics- and scene-consistency-based detectors, the approach most directly relevant to the gap this thesis is built around, account for only two. That imbalance turns out to matter a great deal, and it is returned to in the cross-cluster synthesis below. To better understand this landscape, Figure~\ref{fig:taxonomy} presents the architecture taxonomy of the included AI-generated image and deepfake detection studies, grouping them into four main methodological families. Furthermore, Figure~\ref{fig:distribution} shows the distribution of thematic clusters across the 61 included studies, visually emphasizing how heavily the field concentrates on low-level and face-specific detectors compared to physical modeling.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 3.png}
+\caption{\textbf{Architecture taxonomy of the included AI-generated image and deepfake detection studies.} Four main methodological families are distinguished: low-level artifact detectors, foundation-model semantic detectors, specialized/cross-modal detectors, and the proposed physics- and scene-consistency detectors.}
+\label{fig:taxonomy}
+\end{figure}
+\FloatBarrier
+
+\begin{table}[htbp]
+\caption{Overview of thematic clusters among the 61 included studies}
+\label{tab:overview}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}X c@{}}
+\toprule
+\textbf{Cluster} & \textbf{Studies} \\
+\midrule
+Low-level pixel/noise/frequency artifact detectors & 13 \\
+Face-specific detectors (identity, landmark, temporal, noise) & 13 \\
+Foundation-model (CLIP/vision-language) semantic detectors & 7 \\
+Benchmarks and datasets & 7 \\
+Robustness, bias, and generalization evaluation studies & 7 \\
+Explainable and MLLM-based detectors & 6 \\
+Diffusion-model-specific studies & 3 \\
+Audio-visual / cross-modal fusion detectors & 3 \\
+\textbf{Physics- and scene-consistency-based detectors} & \textbf{2} \\
+\midrule
+\textbf{Total} & \textbf{61} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 4.png}
+\caption{\textbf{Distribution of thematic clusters across the 61 included studies.} Low-level and face-specific detectors dominate the corpus, while physics- and scene-consistency-based detectors remain markedly under-explored.}
+\label{fig:distribution}
+\end{figure}
+\FloatBarrier
+
+\subsection{Low-Level Pixel, Noise, and Frequency-Domain Artifact Detectors (13 studies)}
+Thirteen studies -- the largest single grouping in the corpus -- build on a shared premise: that generative models leave behind statistical residue, in the pixel domain, the noise domain, or the frequency spectrum, that a classifier can learn to spot even when the image looks convincing to the eye. Some simply train a CNN directly on RGB pixels \cite{DeepfakeImage9,AnImproved10}; others extract wavelet-domain features \cite{WaveletdrivenGeneralizable29}, isolate camera-noise residuals from a single patch \cite{ASingle32}, or model the spectral signature of real images directly \cite{AnyresolutionAigenerated33}. What stands out on reading through Table~\ref{tab:frequency_spatial} is how often the same weakness resurfaces in the reported-gap column: compression, resizing, and blur come up again and again as the conditions under which these methods break down, since all three directly disturb the statistical fingerprint the detector was trained to recognize.
+
+\begin{table}[htbp]
+\caption{Included studies -- Low-Level Pixel, Noise, and Frequency-Domain Artifact Detectors}
+\label{tab:frequency_spatial}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{DeepfakeImage9} & Conv2D CNN trained on large-scale OpenForensics images. & Points to future work only broadly, but its framing indicates continued need for evaluation beyond small datasets and heavy reliance on pre-trained models in prior studies. \\
+\cite{AnImproved10} & Dense CNN trained on multi-source real and synthetic images. & Future work is to test variable-input networks, global pooling, and efficient image upscaling while managing the trade-off between accuracy and time latency. \\
+\cite{DynamicGraph17} & Content-guided adaptive frequency extraction, multi-domain attention maps, and dynamic graph spatial-frequency fusion. & Identifies an unresolved issue in prior work: frequency features often remain spatially irrelevant and generalize poorly to increasingly realistic counterfeits. \\
+\cite{DfudetectorAn18} & Feature-space restoration using a feature extractor, feature transformer, and discriminator. & Deepfake detectors still struggle when images are compressed or lose quality. Making them work well in real-world conditions is still an open challenge. \\
+\cite{ArtifactFeature20} & Artifact Purification Network (APN) with frequency-band proposals. & No dedicated limitations section. Operational constraint: requires tuning the number of "frequency-band proposals" based on the difficulty of the dataset (complex datasets require more proposals). \\
+\cite{ImprovingSynthetic24} & Proposes SAFE. It improves training by: Cropping instead of resizing to preserve image artifacts; Colour and rotation augmentation to reduce training bias. & SAFE still depends mainly on local pixel patterns and statistical artifacts. These features may be changed by compression, blur, resizing, or improved generators. \\
+\cite{ComparativeAnalysis27} & Compares three pretrained CNN models: VGG16, VGG19, and ResNet50. It uses transfer learning to classify images as real or deepfake. & The dataset is small and the fake images come only from FaceApp. Therefore, the model may not perform well on images from unseen generators or different manipulation methods. \\
+\cite{WaveletdrivenGeneralizable29} & Proposes Wavelet-CLIP. It uses a frozen CLIP ViT-L/14 model to extract image features and applies wavelet transformation to analyse both spatial and frequency information. & The method mainly focuses on facial deepfakes, so it may not work equally well on full scenes, animals, or objects. It also depends on frequency patterns, which can be affected by compression, blur, resizing, or image editing. \\
+\cite{ASingle32} & Proposes SSP, which selects the simplest or least-textured patch from an image. It uses SRM filters to extract the patch's noise pattern, and ResNet-50 classifies the image as real or AI-generated. & The method depends mainly on camera-noise patterns. Compression, blur, resizing, editing, or very low-quality images can change or remove these patterns. \\
+\cite{AnyresolutionAigenerated33} & Proposes SPAI, which studies images in the frequency or spectral domain. It learns the normal spectral patterns of real images and identifies AI-generated images that do not match these patterns. & The method depends mainly on spectral patterns, which can be changed by strong compression, blur, screenshots, resizing, or image editing. \\
+\cite{BreakingSemantic34} & Divides each image into small patches and randomly shuffles them. This removes much of the overall scene meaning. & Shuffling patches destroys global image structure and important spatial relationships. Therefore, the method may miss errors involving lighting, shadows, perspective, depth, and object interaction. \\
+\cite{MultipleContexts52} & An aggregation network that combines multiple contextual spatial scales with frequency domain transformations. & Frequency-based analysis is highly sensitive to standard video compression (like H.264 or JPEG), severely degrading real-world performance on social media. \\
+\cite{CaenetGeneralized55} & A weighted ensemble architecture combining EfficientNet, Data-Efficient Image Transformer (DeiT), and ConvNeXt alongside Haar wavelet transforms. & Ensembling three distinct, heavy neural network architectures results in high computational complexity and increased inference latency. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Foundation-Model (CLIP/Vision-Language) Semantic-Feature Detectors (7 studies)}
+A different strategy runs through the seven studies gathered here: rather than hand-crafting statistical detectors, they lean on large pretrained vision or vision-language models -- CLIP, almost without exception -- on the premise that internet-scale pretraining has already learned something more durable than any one generator's fingerprint. The specifics vary: linear probing on frozen CLIP features \cite{TowardsUniversal19}, fusing several intermediate layers instead of only the final one \cite{LeveragingRepresentations23}, decomposing the feature space with SVD \cite{OrthogonalSubspace22}, or reframing the whole task as image captioning with a fine-tuned vision-language model \cite{BiloraA25}. Nearly every entry in Table~\ref{tab:foundation_semantic} admits to the same trade-off, though: the forgery signal lives somewhere inside an opaque embedding, so none of these methods can point to a reason \emph{why} a given image was flagged.
+
+\begin{table}[htbp]
+\caption{Included studies -- Foundation-Model (CLIP/Vision-Language) Semantic-Feature Detectors}
+\label{tab:foundation_semantic}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{UcfUncovering16} & Disentanglement framework with multi-task learning, conditional decoding, and contrastive regularization. & Says generalization to new forgery types remains difficult, and overfitting to method-specific patterns is still insufficiently addressed. \\
+\cite{TowardsUniversal19} & Nearest neighbor and linear probing on fixed CLIP-ViT feature space. & Exact visual features the pre-trained space leverages to group diverse fakes are not fully understood. Heavy Reliance on Specific Pre-training Data: The image encoder must be trained on internet-scale data (like CLIP); ImageNet fails. \\
+\cite{ASanity21} & Used AIDE model, It uses two types of features: Low-level features such as noise, texture, and frequency patterns; High-level semantic features from the full image. & AIDE still struggles with highly realistic images and may classify them as real. The method also does not directly check lighting, shadows, depth, surface normals, geometry, or pose. Therefore, its results are not fully explainable. \\
+\cite{OrthogonalSubspace22} & Proposes EFFORT, which uses a pretrained vision model such as CLIP. It applies Singular Value Decomposition (SVD) to divide the model's features into two separate parts. & The method learns forgery features indirectly and cannot clearly explain why an image is classified as fake. \\
+\cite{LeveragingRepresentations23} & Proposes RINE. It takes features from several intermediate layers of CLIP instead of using only the final layer. & The method depends heavily on CLIP features and learns fake-image patterns indirectly. It cannot clearly explain why an image is fake. \\
+\cite{BiloraA25} & Proposes Bi-LORA, which uses the BLIP-2 vision-language model with LoRA fine-tuning. It changes the detection task from normal classification into an image-captioning task. & The method depends heavily on a large pretrained vision-language model, which may require high computing resources. It learns fake-image features indirectly and cannot clearly explain why an image is classified as fake. \\
+\cite{RigidA30} & Proposes RIGID, a training-free method. It adds small noise to an image and processes both the original and noisy image using a vision model such as DINOv2. It also compares their feature similarity. & The result depends on the selected vision model, noise level, and classification threshold. Highly realistic images may still be difficult to detect. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Physics- and Scene-Consistency-Based Detectors (2 studies)}
+Only two studies in the entire corpus take this approach, making it the smallest cluster by a wide margin -- and, for this thesis, arguably the most consequential one. Both work from the same intuition: light behaves according to physical laws no matter which network produced the image, so a reflectance inconsistency \cite{Light2lieDetecting2} or a Phong-model shading mismatch \cite{DigitalImage42} should, in principle, hold up against generators the detector has never seen. In practice, though, Table~\ref{tab:physics_based} shows both studies stopping at a single cue: manual patch selection is still required, and both fail on scenes where the lighting happens to line up, or where the forgery fuses multiple sources rather than reflecting a single edit. That combination -- promising in theory, thin in practice -- is picked up again in Section~\ref{sec:discussion}.
+
+\begin{table}[htbp]
+\caption{Included studies -- Physics- and Scene-Consistency-Based Detectors}
+\label{tab:physics_based}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{Light2lieDetecting2} & Physics-based deepfake detection using physical reflectance laws. & Frames the remaining gap as poor generalization to unseen generators, weak physical grounding in existing methods, vulnerability to adaptive attacks, and limited interpretability. \\
+\cite{DigitalImage42} & Phong reflection model approach to analyze scene inconsistencies in the direction of light. & Requires manual object patch selection. Fails if spliced images share identical lighting angles. Incompatible with image fusion-based forgeries. Validated in controlled environments; unknown parameters limit effectiveness. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Explainable and Multimodal-LLM-Based Detectors (6 studies)}
+If the previous cluster's blind spot is that it cannot explain itself, the six studies gathered here exist largely to address that. Some attribute an image to its likely source model and analyze the prompt that produced it \cite{DefakeDetection12}; others generate a full, human-readable rationale using a large multimodal model \cite{AigiholmesTowards13,SpotThe58}, or trace inconsistencies across the diffusion process's own timesteps \cite{ExplainableSynthetic59}. The cost of this shows up consistently in Table~\ref{tab:explainable_mllm}: several of these methods report substantial inference-time and computational overhead, since generating an explanation is simply a heavier operation than a single forward pass through a classifier.
+
+\begin{table}[htbp]
+\caption{Included studies -- Explainable and Multimodal-LLM-Based Detectors}
+\label{tab:explainable_mllm}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{DefakeDetection12} & Machine-learning fake-image detector with source-model attribution and prompt analysis across four text-to-image models. & The open gap is robustness to rapidly evolving text-to-image models and to prompt conditions that produce more authentic images, especially person-related or medium-length prompts. \\
+\cite{AigiholmesTowards13} & Three-stage Holmes Pipeline with visual expert pre-training, supervised fine-tuning, direct preference optimization, and collaborative decoding. & Explicitly says prior AIGI detection still lacks human-verifiable explanations and does not generalize well to the latest generation technology. \\
+\cite{ZerofakeZeroshot47} & A zero-shot, training-free framework utilising perturbation-based DDIM inversion and reconstruction guided by adversary prompts. & High computational time and hardware overhead during the inference phase. On an NVIDIA DGX-A100, the DDIM inversion and reconstruction process takes 30.2 seconds per image. \\
+\cite{ExplainableAi48} & A two-stage pipeline: (1) deepfake detection using ResNet-50, Inception V3, and VGG-16 classifiers trained on the Celeb-DF dataset. & The model's interpretability is constrained by the narrow range of facial concepts present in the deepfake face dictionary. \\
+\cite{SpotThe58} & Prompting and feature extraction using Large Multimodal Models (LMMs) for artifact localization and explanation. & The massive parameter size of LMMs causes significant computational overhead, making real-time or high-throughput detection impractical. \\
+\cite{ExplainableSynthetic59} & Analyzing noise patterns and structural inversions across multiple timesteps of the diffusion generation process. & The methodology is strictly tied to diffusion architectures and is ineffective against older GAN-based or manual manipulation techniques. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Face-Specific Deepfake Detectors (Identity, Landmark, Temporal, Noise) (13 studies)}
+Thirteen more studies -- matching the low-level cluster for the largest share of the corpus -- narrow their focus to human faces specifically: identity swaps, expression transfer, and the temporal artifacts that show up across video frames \cite{ContrastivePseudo1,DynamicSpatialtemporal50,TowardsGeneralizable49}. Several explicitly frame the problem as domain generalization, attempting to separate forgery-relevant features from dataset-specific ones \cite{CrossdfImproving44,GmdfGeneralized37}. The results in Table~\ref{tab:face_specific} are strong within that facial domain, but a caution repeats across many of the entries: because training and evaluation both stay almost entirely within faces, several authors are careful to note that their reported numbers may not carry over to full scenes or non-facial subjects at all.
+
+\begin{table}[htbp]
+\caption{Included studies -- Face-Specific Deepfake Detectors (Identity, Landmark, Temporal, Noise)}
+\label{tab:face_specific}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{ContrastivePseudo1} & Contrastive Pseudo Learning with Global-Local Voting, confidence-based soft pseudo-labels, and multi-stage iterative learning for open-world attribution. & Says identity swapping, expression transfer, and forgery traces in unknown open-world unlabeled faces remain under-explored, indicating future work on broader attack coverage and open-world interpretability. \\
+\cite{NoiseBased5} & Noise-based detector using enhanced RIDNet and Multi-Head Relative-Interaction between face and background. & Leaves open the challenge that increasingly realistic deepfakes show few visible differences, so methods that depend on stronger and more invariant forensic traces are still needed. \\
+\cite{AHybrid26} & Uses a hybrid CNN-LSTM model with transfer learning. The CNN extracts visual features from face images, while the LSTM learns relationships between these features. & The method mainly focuses on facial deepfakes and does not test images from completely unseen generators. Its high results may not represent real-world generalization. \\
+\cite{GmdfGeneralized37} & Proposes GM-DF, which trains one model using multiple deepfake datasets. It uses expert branches to learn dataset-specific features and CLIP to learn common forgery features. & The method mainly focuses on facial deepfakes, so it may not work equally well on full scenes, animals, or objects. \\
+\cite{FinegrainedOpenset38} & Uses labelled deepfake images from a source dataset and unlabelled images from a target dataset. It groups the target images using adaptive clustering and gives them pseudo-labels. & The method requires access to unlabelled images from the target domain, so it is not fully zero-shot. \\
+\cite{FaceForgery39} & Combines spatial features from the original face image with noise features that reveal hidden forgery traces. & The method mainly focuses on facial deepfakes, so it may not work equally well on animals, objects, or complete AI-generated scenes. \\
+\cite{OpensetDeepfake40} & Proposes OSDFD, which uses a pretrained Vision Transformer. It adds lightweight LoRA and adapter modules to learn global and local forgery features without training the whole model. & The method mainly focuses on facial deepfakes, so it may not work equally well on animals, objects, or full AI-generated scenes. \\
+\cite{CrossdfImproving44} & Deep Information Decomposition (DID) framework that formulates cross-dataset deepfake detection as a domain generalization problem. & All hyperparameters in the loss function require manual tuning through extensive experimental trials, which is inefficient and suboptimal. The domain classification module depends on explicit domain-specific metadata. \\
+\cite{TowardsGeneralizable49} & The LGMamba network, which parallelly combines global long-range modelling (via a VMamba visual State-Space backbone) with local feature extraction. & Fails to model temporal dependencies. Because it is strictly designed for frame-level spatial analysis, it is less effective on video datasets (like DFD) where manipulation operations involve frame interpolation or dropping. \\
+\cite{DynamicSpatialtemporal50} & The Dynamic Spatial-Temporal Network (DST-Net), integrating: (1) Short-term Temporal Modality Extraction (STME) to compute gradient differences between consecutive frames. & The dynamic attention mechanisms and multi-scale temporal aggregation increase the overall computational cost, which may limit deployment in real-time or resource-constrained settings. \\
+\cite{DeepfakeDetection57} & Supervised fine-tuning of a standard Convolutional Neural Network for binary (real/fake) spatial classification. & Pure CNNs struggle heavily with cross-domain generalization and often fail completely on unseen modern diffusion models. \\
+\cite{DeepshieldFortifying61} & Combines Local Patch Guidance (LPG) and Global Forgery Diversification (GFD) using a fine-tuned CLIP-ViT backbone with a 3D spatiotemporal adapter. & The reliance on temporal 3D convolutions increases computational overhead, complicating deployment for live streaming applications. \\
+\cite{DelocateDetection63} & A two-stage framework utilizing a masked autoencoder trained only on real faces for consistency learning, followed by a localization module. & The initial recovery phase depends entirely on high-quality, completely untampered real faces, making the training sensitive to noisy data. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Benchmarks and Datasets (7 studies)}
+Seven of the included studies are not detectors at all -- they are the datasets and evaluation protocols that make testing a detector's generalization possible in the first place, and in that sense they underpin nearly everything else discussed in this review. This includes a standardized benchmark spanning fifteen methods and nine datasets \cite{DeepfakebenchA4}, large in-the-wild image collections \cite{TowardsRealworld56,WildfakeA66}, and a continuously updated framework that pulls outputs directly from current commercial generative APIs \cite{AigenbenchA72}. The complaint that surfaces again and again in Table~\ref{tab:benchmark_dataset} is one of timing: a benchmark can be exhaustive on the day it is published and already dated a year later, a concern more than one of these papers raises about its own dataset \cite{TowardsRealworld56,Deepfakeeval2024A64}.
+
+\begin{table}[htbp]
+\caption{Included studies -- Benchmarks and Datasets}
+\label{tab:benchmark_dataset}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{DffmdA3} & Inception-ResNet-v2 with preprocessing, residual connection, feature extraction, and batch normalization on a face-mask dataset. & The attached paper explicitly reports a lack of masked-face video resources and calls for more deep learning experiments for masked deepfake detection. \\
+\cite{DeepfakebenchA4} & Unified benchmark with standardized data management, implementations, and evaluation protocols across 15 methods and 9 datasets. & The remaining need is field-wide adoption and extension of uniform preprocessing, settings, and metrics, because inconsistent pipelines still produce unfair or misleading comparisons. \\
+\cite{TowardsRealworld56} & Massive data curation and benchmark testing using diverse, "in-the-wild" manipulations. & Static datasets, no matter how diverse, rapidly lose relevance as newer, superior generative AI architectures are released. \\
+\cite{ImaginetA60} & Creation of a multi-content, zero-shot evaluation benchmark spanning diverse semantic classes. & Focuses purely on benchmarking existing models rather than offering a new, functional detection mechanism. \\
+\cite{Deepfakeeval2024A64} & Multi-modal empirical evaluation of state-of-the-art detectors against circulating, real-world 2024 media content. & Specifically bounded to 2024 generative capabilities, requiring constant future updates to remain a relevant metric. \\
+\cite{WildfakeA66} & Large-scale dataset compilation focused on highly challenging, complex, and unconstrained AI-generated images. & Like many large datasets, it lacks fine-grained annotations regarding the specific generative parameters or prompts used to create the images. \\
+\cite{AigenbenchA72} & An ongoing, continuously updated evaluation framework integrating outputs directly from new generative APIs. & Requires immense constant maintenance, persistent API access, and heavy computational resources to keep the benchmark up to date. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Robustness, Bias, and Generalization Evaluation Studies (7 studies)}
+Where the benchmark cluster builds new test beds, these seven studies instead take detectors that already exist and try to break them. That includes uncovering compression- and resolution-based bias baked into training data \cite{FakeOr35}, testing detectors against sixteen custom Stable Diffusion variants alongside a content-preserving attack \cite{AnAnalysis36}, and probing straightforward adversarial robustness \cite{AdversarialRobustness65,ComprehensiveEvaluation46}. The message running through Table~\ref{tab:robustness_bias} is a sobering one for the rest of the field: a detector's reported accuracy can look impressive for reasons that have little to do with genuinely detecting forgeries, a possibility the evaluation design in Section~\ref{sec:discussion} tries to account for directly.
+
+\begin{table}[htbp]
+\caption{Included studies -- Robustness, Bias, and Generalization Evaluation Studies}
+\label{tab:robustness_bias}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{QualityagnosticDeepfake8} & Quality-agnostic single-model detector using HSIC-based collaborative learning and adversarial weight perturbation. & Low-quality and mixed-quality deepfake detection remains a grave challenge, and multi-model quality-specific setups are still computationally costly and impractical for deployment. \\
+\cite{ABiasfree31} & Proposes B-Free. It creates fake images from real COCO images using Stable Diffusion 2.1, so the real and fake images have similar content. & The training images are mainly generated using Stable Diffusion 2.1, so the model may fail on future generators that use a very different generation process. It can also be affected by adversarial attacks. \\
+\cite{FakeOr35} & Studies JPEG compression and image-size bias in AI-generated image datasets. It creates a corrected version of GenImage by making the real and generated images more similar in compression and resolution. & Mainly studies dataset bias and does not propose a new detection architecture. Its experiments focus mostly on GenImage and two detector models, so other datasets may contain different biases. \\
+\cite{AnAnalysis36} & Evaluates eight deepfake detectors using images from 16 customized Stable Diffusion models. It also tests an attack that changes image content using vision foundation models without adding visible noise. & Mainly uses customized Stable Diffusion models, so the results may not cover every GAN or modern image generator. \\
+\cite{ComprehensiveEvaluation46} & Attaches custom classification heads to three pre-trained convolutional neural networks (CNNs): XCeption (depthwise separable convolutions), ResNet (ResNet-50 and ResNet-101 ensemble predictions), and VGG16. & All models suffer from pervasive vulnerability to adversarial attacks, with accuracy dropping significantly under mild FGSM perturbations. \\
+\cite{PreservingFairness62} & Fairness-aware regularization techniques applied across varying demographic training subsets. & Implementing strict fairness constraints often results in a mathematical trade-off, slightly lowering overall absolute detection accuracy. \\
+\cite{AdversarialRobustness65} & Applying gradient-based adversarial perturbations and common image degradations to test model resilience. & Acts purely as a vulnerability assessment rather than providing a standalone, robust defensive architecture to solve the problem. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Audio-Visual and Cross-Modal Fusion Detectors (3 studies)}
+Three studies push past single-image analysis altogether, fusing audio and visual streams \cite{ARobust11,ContextualCrossmodal68} or combining spatial and frequency pathways within the visual modality itself \cite{AMultimodal69}. That cross-modal view opens up signals a single image simply does not have -- lip-sync mismatch, for instance -- but Table~\ref{tab:audiovisual_multimodal} makes the trade-off obvious: none of these methods have anything to say about a single static image, which is the case this review is most concerned with.
+
+\begin{table}[htbp]
+\caption{Included studies -- Audio-Visual and Cross-Modal Fusion Detectors}
+\label{tab:audiovisual_multimodal}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{ARobust11} & Audio-visual temporal feature extraction with time-aware neural networks and multimodal fusion trained on disjoint monomodal datasets. & Explicitly proposes future work on new fusion methods, especially informed fusion that weights modalities by relevance; the broader limitation is the scarcity of multimodal training datasets. \\
+\cite{ContextualCrossmodal68} & Cross-modal attention networks that analyze the synchronization between audio tracks and visual lip movements. & Completely ineffective on image-only deepfakes, silent videos, or heavily dubbed media. \\
+\cite{AMultimodal69} & Multi-stream feature extraction architecture combining spatial (RGB) and frequency data pathways. & Requires processing multiple dense data streams simultaneously, leading to higher resource consumption during inference. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Diffusion-Model-Specific Detection Studies (3 studies)}
+The final three studies narrow their scope in the opposite direction from the audio-visual cluster: rather than covering more content types, they specialize deeply in a single generator family. That includes a diffusion-specific benchmark with degraded-image testing \cite{RobustnessAnd7}, a profile of the spatial and frequency signatures particular to latent diffusion sampling \cite{DiffusionDeepfake70}, and a baseline comparison of CNNs and ViTs against early diffusion outputs \cite{TowardsThe71}. Table~\ref{tab:diffusion_specific} shows the cost of that specialization clearly: these methods generalize poorly back to older, GAN-based manipulation, and one of the three openly reports that its findings are already dated against newer generators such as SD3 or Flux -- the same obsolescence problem raised by the benchmark cluster above.
+
+\begin{table}[htbp]
+\caption{Included studies -- Diffusion-Model-Specific Detection Studies}
+\label{tab:diffusion_specific}
+\centering\footnotesize
+\begin{tabularx}{\columnwidth}{@{}p{0.10\columnwidth} X X@{}}
+\toprule
+\textbf{Study} & \textbf{Core Approach} & \textbf{Reported Gap / Limitation} \\
+\midrule
+\cite{RobustnessAnd7} & Diffusion-based DFF dataset with cross-generator and degraded-image evaluation protocols. & Detector performance still varies across generative methods and image degradations, so more universally robust detectors and finer analysis of perturbation effects remain open. \\
+\cite{DiffusionDeepfake70} & Profiling and detecting the specific spatial and frequency signatures inherent to latent diffusion models. & Focuses almost exclusively on diffusion-based models, limiting its generalization capability against legacy manipulation techniques like FaceSwap. \\
+\cite{TowardsThe71} & Evaluating standard CNN and Vision Transformer (ViT) classification baselines against early diffusion model outputs. & Conducted on older (2022 era) diffusion models, making its specific empirical findings somewhat outdated for modern generators like SD3 or Flux. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Cross-Cluster Synthesis}
+
+\subsubsection{Low-level artifact learners generalize poorly}
+The largest cluster (13/61 studies) consists of detectors that classify images using pixel-, noise-, or frequency-domain statistics -- GAN checkerboard patterns, sensor-noise residuals, or spectral signatures extracted via wavelets or Fourier analysis \cite{ArtifactFeature20,AnyresolutionAigenerated33,MultipleContexts52,CaenetGeneralized55,WaveletdrivenGeneralizable29,BreakingSemantic34}. These methods routinely report strong in-domain accuracy but explicitly flag degradation under compression, resizing, or -- most importantly for this review -- when tested against generator families absent from training. This corroborates the review's founding premise: fingerprint-style detectors do not transfer across generator boundaries. It is worth being precise about why: these detectors are learning the residue of one specific generator's sampling and rendering pipeline, not any general property of what makes an image look real, so the moment that pipeline changes -- a new architecture, a new training corpus, even just a JPEG pass -- the exact signal the classifier was built around disappears with it.
+
+\subsubsection{Foundation-model semantic features generalize better, but remain indirect}
+Seven studies exploit large pretrained vision(-language) backbones, chiefly CLIP, either via linear probing \cite{TowardsUniversal19}, intermediate-layer fusion \cite{LeveragingRepresentations23}, orthogonal/SVD feature decomposition \cite{OrthogonalSubspace22}, or vision-language captioning reframing \cite{BiloraA25}. These approaches consistently report markedly better cross-generator AUC than low-level detectors, supporting the hypothesis that broad, internet-scale pretraining captures more generator-invariant structure than architecture-specific noise statistics. However, every one of these studies self-reports the same limitation: the detector learns forgery cues \emph{indirectly}, through an opaque, high-dimensional embedding, and therefore cannot explain \emph{why} an image is classified as fake -- a direct contrast with a physically grounded, per-cue detector. Put simply, this cluster buys better generalization by giving up exactly the kind of explanation a practitioner would need when a flagged image actually matters.
+
+\subsubsection{Physics-based detection is the least explored and most under-resourced cluster}
+Only two of the 61 included studies pursue physical-consistency modeling directly \cite{Light2lieDetecting2,DigitalImage42}. Both report that physics-based scene analysis generalizes across generator architectures \emph{by construction}, because lighting, shadow, and reflectance laws hold regardless of which network produced the pixels -- but both also report shallow, single-cue implementations (a single reflectance law, or a Phong-model shading check) that require manual object-patch selection and fail on scenes with parallel lighting assumptions or fused/spliced content sharing identical lighting angles. Related but non-detection physics literature -- multi-view geometry/reflectance capture \cite{Deep3DCaptureExcluded} and human-perception studies of physical implausibility in manipulated photographs \cite{CanPeopleExcluded} -- was excluded from the primary synthesis (off-topic) but corroborates that physical implausibility is a genuine, human-relevant, and under-automated detection signal. Considered together, these two studies and that adjacent literature point to a direction the field has barely finished building out: physical cues generalize essentially for free, in a way statistical fingerprints never will, yet research has so far gone little further than single-cue proofs of concept.
+
+\subsubsection{Face-specific and explainable/MLLM clusters address complementary needs}
+The face-specific cluster (13 studies) targets identity-swap and expression-transfer artifacts using landmark-guided convolution \cite{TowardsGeneralizable49}, spatiotemporal inconsistency modeling \cite{DynamicSpatialtemporal50}, and cross-domain information decomposition \cite{CrossdfImproving44}, but is architecturally narrow to human faces and rarely tested against non-face, fully-synthetic scenes. The explainable/MLLM cluster (6 studies) instead trades raw accuracy for interpretability, using large multimodal models to narrate detected artifacts \cite{AigiholmesTowards13,SpotThe58}, but at substantial inference cost, and without explicitly modeling geometry or lighting as first-class signals. Neither cluster is really in competition with the other: one shows that narrow, domain-specific modeling performs well within its lane, while the other shows that interpretability is achievable, but currently only through expensive, general-purpose reasoning rather than anything structured around physical evidence. What remains missing from both is a detector that is lightweight, scene-general, and still able to explain itself.
+
+\subsubsection{Benchmarks confirm the generalization gap empirically}
+The seven benchmark/dataset studies (e.g., GenImage-derived corpora, WildFake, ImagiNet, AI-GenBench, Deepfake-Eval-2024) are what make cross-generator evaluation possible in the first place, and several explicitly report that detectors trained on older GAN/early-diffusion data collapse when tested on 2024--2026 generators such as Flux.1 and SD3 \cite{Deepfakeeval2024A64, AigenbenchA72}, directly motivating the Domain-A/Domain-B split adopted in the proposed thesis architecture. In practice, this cluster is less a competing methodological contribution than the infrastructure everything else in this review depends on: without datasets built specifically to hold newer generators out of training, none of the cross-generator collapse described above could have been measured at all.
+
+\subsubsection{Robustness/bias studies reveal confounds beyond generator identity}
+Seven studies show that reported accuracy gains can be artifacts of dataset construction rather than genuine forgery cues -- e.g., JPEG-compression or resolution bias between real and fake classes \cite{FakeOr35}, or vulnerability to simple adversarial perturbations \cite{AdversarialRobustness65}. This has a direct methodological implication for the proposed thesis work: any Domain-A/Domain-B evaluation must control for compression and resolution confounds, not only generator identity. It also raises a quieter concern about the rest of the corpus: some of the strong cross-generator results reported elsewhere in this review may be partly riding on these same confounds, since few studies outside this cluster test for them explicitly.
+
+\subsection{Related Reviews Excluded from Primary Synthesis}
+\label{sec:relatedreviews}
+Three secondary review articles were identified and excluded from the quantitative synthesis (per Section II-A) but are worth noting here as context. A wide-ranging systematic review of deep-learning-based deepfake detection across video, image, audio, and hybrid media reports that immature, inconsistently described literature impeded reliable cross-method comparison \cite{HeidariReviewExcluded}. A review of advanced machine-learning and fusion-based detection methods lists cross-dataset generalization, unseen-class detection, interpretability, and lightweight deployment as an open future-work agenda \cite{GuptaReviewExcluded}. A more recent survey of autonomous detection techniques confirms the field's continuing shift toward generalizable, automated evaluation frameworks \cite{SunilSurveyExcluded}. All three converge on the same problem this review arrives at independently: generalization to unseen generators, not raw in-domain accuracy, is what the field remains stuck on. Three separate surveys and one structured, cluster-by-cluster synthesis arriving at the same conclusion is a reasonably strong signal that this is not simply an artifact of how this particular corpus happened to be assembled.
+
+\section{Discussion}
+\label{sec:discussion}
+
+Before interpreting the specific findings across clusters, it is necessary to view the limitations of the field holistically. Figure~\ref{fig:gapmap} presents a research-gap map over representative studies and recurrent gap dimensions. The near-uniform columns for cross-generator generalization and physical cues indicate systemic, field-wide gaps.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 5.png}
+\caption{\textbf{Research-gap map over representative studies and recurrent gap dimensions.} Cells encode whether each gap is addressed, partially addressed, or present. The near-uniform columns for cross-generator generalization and physical cues indicate systemic, field-wide gaps.}
+\label{fig:gapmap}
+\end{figure}
+\FloatBarrier
+
+\subsection{Interpretation}
+Synthesizing across all nine clusters, three findings stand out. First: detection strategies form a rough generalization hierarchy -- low-level statistical/frequency detectors generalize worst, pretrained semantic (CLIP-style) detectors generalize moderately well but opaquely, and the sparse physics-based literature generalizes well \emph{in principle} but has only been implemented with single, shallow cues. Second: physical-consistency modeling is empirically under-explored (2/61 studies) relative to its theoretical promise, and no included study combines multiple physical cues (lighting, depth, surface normals, and pose/geometry) within a single generator-agnostic architecture. Third: this is precisely the gap the proposed cross-attention, multi-head physical-signal fusion architecture is designed to close -- it generalizes the single-cue physics detectors identified in Section III-B-iii into a multi-cue framework, while retaining the interpretability that foundation-model and MLLM-based detectors (Section III-B-ii) explicitly lack.
+
+\subsection{Limitations of the Evidence}
+Several included studies rely on modest, single-domain datasets (e.g., FaceApp-only face sets), limiting the strength of their generalization claims. Reported metrics (AUC, accuracy, EER) are not uniformly defined or measured on comparable held-out generator sets across studies, which precluded meta-analysis and required a narrative synthesis instead.
+
+\subsection{Limitations of the Review Process}
+This review was conducted by a four-author team with cross-checked, consensus-based screening rather than a fully blinded dual-independent review with a pre-specified adjudication protocol, and no external protocol registration (e.g., PROSPERO) was performed; both are deviations from a fully independent, dual-reviewer systematic-review protocol. The search was not exhaustive across all possible databases (e.g., Scopus and Web of Science were not directly queried), and grey literature beyond arXiv preprints was not systematically pursued. Because all four team members were involved in eligibility screening and data extraction, individual selection bias is reduced relative to a single-reviewer design, but shared blind spots in search-term formulation or category judgment across the team cannot be fully ruled out.
+
+\subsection{Implications for Practice and Future Research}
+The synthesis directly motivates a research design in which (i) a multi-head model separately estimates light/shadow direction, surface normals, monocular depth, and pose/geometry from an input image; (ii) a cross-attention fusion module is trained to flag \emph{inconsistencies between} these physical signals rather than to memorize any single generator's fingerprint; and (iii) the model is trained exclusively on older, known generators (Domain A: FFHQ, FaceForensics++, GenImage) and evaluated, without any tuning, on held-out 2024--2026 generators (Domain B: GenImage++, Defactify), mirroring the evaluation logic that the benchmark cluster (Section III-B-v) shows is necessary to demonstrate genuine, not memorized, generalization. To operationalize this research design, Figure~\ref{fig:roadmap} sequences the proposed future directions into short-, medium-, and long-term phases, providing a phased roadmap toward a comprehensive physical consistency framework.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{Pictures/Figure 6.png}
+\caption{\textbf{Phased future-research roadmap.} Short-term items focus on benchmarking and single-cue analysis; medium-term items require multi-cue fusion across domains; long-term items integrate these into a comprehensive physical consistency framework.}
+\label{fig:roadmap}
+\end{figure}
+\FloatBarrier
+
+\section{Conclusion}
+This systematic review examined 61 primary studies on AI-generated image and deepfake detection, organized into nine thematic clusters. The synthesis provides converging evidence that (a) statistical/frequency artifact learners fail to generalize across generator families, (b) pretrained semantic features generalize better but remain uninterpretable, and (c) physically grounded, multi-cue detection -- lighting, shadow, geometry, depth, and anatomical plausibility jointly modeled via cross-attention -- is both theoretically well-motivated and empirically under-explored. This gap constitutes the primary contribution opportunity for the proposed thesis research on cross-generator, physics-aware forgery detection.
+
+\backmatter
+
+\section*{Declarations}
+
+\begin{itemize}
+\item \textbf{Funding:} No external funding was received for this review.
+\item \textbf{Conflict of interest/Competing interests:} The authors declare no competing interests.
+\item \textbf{Availability of data and materials:} The structured data-extraction spreadsheet (title, author, method, summary, and limitation for all 72 compiled and 61 included records) underlying this review is maintained by the authors and available upon request.
+\item \textbf{Registration and Protocol:} This review was not registered in an external protocol registry. No prior protocol was prepared; deviations from a pre-specified plan are therefore not applicable.
+\end{itemize}
+
+\bibliography{sn-bibliography}
+
+\end{document}
