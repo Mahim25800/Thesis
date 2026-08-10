@@ -1,0 +1,19 @@
+name: Compile LaTeX Document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: sn-article.tex # <-- Updated to match your file name
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-paper
+          path: sn-article.pdf # <-- Updated to match your file name
