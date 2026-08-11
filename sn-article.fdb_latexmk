@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sn-article"] 1786462234.47124 "sn-article.aux" "sn-article.bbl" "sn-article" 1786462356.33579 0
+["bibtex sn-article"] 1786463058.5475 "sn-article.aux" "sn-article.bbl" "sn-article" 1786463074.91937 0
   "./sn-bibliography.bib" 1786375403 23372 596dcea4cfbe3bafc597e33c8e72f01a ""
   "./sn-mathphys-num.bst" 1786375403 64166 9adad5d5c1e00c8b866e91fad1a03aa0 ""
-  "sn-article.aux" 1786462355 20343 a0971b385c4e0256f6bd81f929f7555b "pdflatex"
+  "sn-article.aux" 1786463073 20300 68004050ab57f5e0d8a645e1352846b8 "pdflatex"
   (generated)
   "sn-article.bbl"
   "sn-article.blg"
   (rewritten before read)
-["pdflatex"] 1786462344.62274 "d:/Thesis/Thesis Review Paper/sn-article.tex" "sn-article.pdf" "sn-article" 1786462356.33649 0
+["pdflatex"] 1786463059.24506 "d:/Thesis/Thesis Review Paper/sn-article.tex" "sn-article.pdf" "sn-article" 1786463074.92054 0
   "C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786462204 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/DELL/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi602/tcrm1000.pk" 1786462217 11548 68eb8e28e39fc42826d83d236bd94623 ""
   "C:/Users/DELL/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1786462066 13367120 ea83074bce4509a3f2e4903f18f1968d ""
@@ -141,11 +141,11 @@
   "Pictures/Figure 4.png" 1786375402 159735 a90d633c2e3a030a72184ec9477d03d1 ""
   "Pictures/Figure 5.png" 1786375402 103240 28190253ce3db292c8d53a12efbb113e ""
   "Pictures/Figure 6.png" 1786375402 1197685 a3086316ad6797eb20849f20877599d9 ""
-  "d:/Thesis/Thesis Review Paper/sn-article.tex" 1786462343 64033 76437cca81ae1f0484c7f39fa136f739 ""
-  "sn-article.aux" 1786462355 20343 a0971b385c4e0256f6bd81f929f7555b "pdflatex"
-  "sn-article.bbl" 1786462234 30663 d2890c9a550ad077f86c341dace2e851 "bibtex sn-article"
-  "sn-article.out" 1786462355 9591 c09be54b701f4bb5ac8e6e13a89bc4f8 "pdflatex"
-  "sn-article.tex" 1786462343 64033 76437cca81ae1f0484c7f39fa136f739 ""
+  "d:/Thesis/Thesis Review Paper/sn-article.tex" 1786463039 61775 bf05bd0cec92caa1cc7f1cbaddaae16e ""
+  "sn-article.aux" 1786463073 20300 68004050ab57f5e0d8a645e1352846b8 "pdflatex"
+  "sn-article.bbl" 1786463059 30663 d2890c9a550ad077f86c341dace2e851 "bibtex sn-article"
+  "sn-article.out" 1786463073 9591 c09be54b701f4bb5ac8e6e13a89bc4f8 "pdflatex"
+  "sn-article.tex" 1786463039 61775 bf05bd0cec92caa1cc7f1cbaddaae16e ""
   "sn-jnl.cls" 1786375403 55857 7d4515312123fd1744517a7415d792ff ""
   (generated)
   "sn-article.aux"

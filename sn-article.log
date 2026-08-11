@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.11)  11 AUG 2026 21:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.11)  11 AUG 2026 21:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1089,17 +1089,11 @@ Underfull \hbox (badness 2503) in paragraph at lines 350--350
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19]
-<Pictures/Figure 5.png, id=607, 1606.0pt x 1215.54124pt>
+<Pictures/Figure 5.png, id=600, 1606.0pt x 1215.54124pt>
 File: Pictures/Figure 5.png Graphic file (type png)
 <use Pictures/Figure 5.png>
 Package pdftex.def Info: Pictures/Figure 5.png  used on input line 385.
@@ -1107,14 +1101,14 @@ Package pdftex.def Info: Pictures/Figure 5.png  used on input line 385.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [20]
+ [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21 <./Pictures/Figure 5.png>]
-<Pictures/Figure 6.png, id=621, 1656.1875pt x 642.4pt>
+ [20 <./Pictures/Figure 5.png>]
+<Pictures/Figure 6.png, id=615, 1656.1875pt x 642.4pt>
 File: Pictures/Figure 6.png Graphic file (type png)
 <use Pictures/Figure 6.png>
 Package pdftex.def Info: Pictures/Figure 6.png  used on input line 405.
@@ -1122,10 +1116,10 @@ Package pdftex.def Info: Pictures/Figure 6.png  used on input line 405.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22] (sn-article.bbl
+ [21] (sn-article.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23 <./Pictures/Figure 6.png>]
+ [22 <./Pictures/Figure 6.png>]
 Underfull \hbox (badness 3838) in paragraph at lines 72--80
 \OT1/cmr/m/n/10 Detec-tion. IEEE Access (2023). Avail-able: [][]$https : / / www . researchgate . net /
  []
@@ -1231,7 +1225,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24]
+ [23]
 Underfull \hbox (badness 10000) in paragraph at lines 177--186
 \OT1/cmr/m/n/10 paper / Comparative-[]Analysis-[]of-[]Deepfake-[]Image-[]Detection-[]Ashani-[]Sya^^Ldza /
  []
@@ -1327,7 +1321,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [25]
+ [24]
 Underfull \hbox (badness 10000) in paragraph at lines 292--300
 []\OT1/cmr/m/n/10 Yan, S., et al.: A San-ity Check for AI-generated Image Detec-
  []
@@ -1423,7 +1417,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26]
+ [25]
 Underfull \hbox (badness 10000) in paragraph at lines 414--422
 [][]$\OT1/cmr/m/n/10 https : / / openaccess . thecvf . com / content / ICCV2023 / papers / Sun[]Contrastive[]
  []
@@ -1519,7 +1513,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27]
+ [26]
 Underfull \hbox (badness 1997) in paragraph at lines 595--604
 \OT1/cmr/m/n/10 Images Detec-tion. arXiv preprint. Avail-able: [][]$https : / / www . semanticscholar .
  []
@@ -1555,7 +1549,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [28]
+ [27]
 Underfull \hbox (badness 10000) in paragraph at lines 667--676
 []\OT1/cmr/m/n/10 Abdullah, S.M., et al.: An Anal-y-sis of Recent Advances
  []
@@ -1601,7 +1595,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29]
+ [28]
 Underfull \hbox (badness 7362) in paragraph at lines 812--820
 \OT1/cmr/m/n/10 Multi-View Images. arXiv preprint (2020). Excluded (off-topic, back-
  []
@@ -1619,7 +1613,7 @@ Underfull \hbox (badness 5817) in paragraph at lines 849--858
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30] (sn-article.aux)
+ [29] (sn-article.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
@@ -1628,17 +1622,17 @@ Package rerunfilecheck Info: File `sn-article.out' has not changed.
 (rerunfilecheck)             Checksum: C09BE54B701F4BB5AC8E6E13A89BC4F8;9591.
  ) 
 Here is how much of TeX's memory you used:
- 14460 strings out of 467501
- 232829 string characters out of 5409036
- 673733 words of memory out of 5000000
+ 14459 strings out of 467501
+ 232822 string characters out of 5409036
+ 673732 words of memory out of 5000000
  43325 multiletter control sequences out of 15000+600000
  652578 words of font info for 134 fonts, out of 8000000 for 9000
  1151 hyphenation exceptions out of 8191
- 89i,12n,117p,1988b,733s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,117p,2009b,733s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi602\tcrm1000.pk><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on sn-article.pdf (30 pages, 5579041 bytes).
+Output written on sn-article.pdf (29 pages, 5575917 bytes).
 PDF statistics:
- 905 PDF objects out of 1000 (max. 8388607)
- 163 named destinations out of 1000 (max. 500000)
+ 898 PDF objects out of 1000 (max. 8388607)
+ 162 named destinations out of 1000 (max. 500000)
  319 words of extra memory for PDF output out of 10000 (max. 10000000)
 
