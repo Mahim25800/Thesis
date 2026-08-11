@@ -19,11 +19,17 @@
 \author[2]{\fnm{Mostofa} \sur{Seum}}\email{23-50299-1@student.aiub.edu}
 \author[3]{\fnm{Meer} \sur{Mursalin}}\email{23-50298-1@student.aiub.edu}
 \author[4]{\fnm{Sabbir} \sur{Hossain}}\email{23-50308-1@student.aiub.edu}
+\author*[5]{\fnm{Tanvir} \sur{Ahmed}}\email{tanvir.ahmed@aiub.edu}
+\author[6]{\fnm{Rifath} \sur{Mahmud}}\email{rifath.mahmud@aiub.edu}
+\author[7]{\fnm{Syeda Anika} \sur{Tasnim}}\email{anika.tasnim@aiub.edu}
 
 \affil[1]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50316-1}}
 \affil[2]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50299-1}}
 \affil[3]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50298-1}}
 \affil[4]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}\\ \textit{ID: 23-50308-1}}
+\affil[5]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}}
+\affil[6]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}}
+\affil[7]{\orgdiv{Department of Computer Science}, \orgname{American International University-Bangladesh (AIUB)}, \city{Dhaka}, \country{Bangladesh}}
 
 \abstract{
 Deepfake and AI-generated image (AIGI) detectors that exploit generator-specific low-level fingerprints—such as pixel, noise, or frequency artifacts—exhibit severe generalization failures when evaluated on previously unseen generator families, with area-under-the-curve (AUC) often approaching chance on recent diffusion and hybrid models including Flux.1, Stable Diffusion 3, and MidJourney v6. We conduct a structured search and eligibility screening of the contemporary literature and organize the resulting body of work into nine thematic clusters: low-level artifact detectors, foundation-model and vision-language semantic detectors, physics- and scene-consistency methods, explainable and multimodal-large-language-model (MLLM) detectors, face-specific deepfake detectors, benchmarks and datasets, robustness and bias evaluations, audio-visual fusion detectors, and diffusion-model-specific studies. Across these clusters, approaches that implicitly memorize generator-dependent statistical signatures consistently show poor cross-generator robustness, whereas methods grounded in pretrained semantic representations (e.g., CLIP-based feature reuse) or in physically motivated scene cues (illumination, reflectance, geometry) achieve substantially stronger performance under domain shift. At the same time, physics-based and multi-cue scene-consistency detectors remain markedly underrepresented relative to semantic and fingerprint-based methods, leaving a critical gap in generator-agnostic AIGI detection. To address this gap, we outline a conceptual framework that fuses light and shadow, surface-normal, depth, and geometry signals via cross-attention, trained on older-generation data (Domain A) and evaluated zero-shot on unseen 2024–2026 generators (Domain B), thereby providing a principled candidate pathway toward more robust, physically grounded, and generator-agnostic deepfake and AIGI detection in rapidly evolving model ecosystems.
