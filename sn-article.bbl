@@ -73,8 +73,8 @@ Available: \url{https://ceur-ws.org/Vol-3706/Paper9.pdf}
 {An Improved Dense CNN Architecture for Deepfake Image Detection}.
 IEEE Access
 (2023).
-Available:
-  \url{https://www.researchgate.net/publication/368958707_An_Improved_Dense_CNN_Architecture_for_Deepfake_Image_Detection}
+doi: 10.1109/access.2023.3251417. Available:
+  \url{https://doi.org/10.1109/access.2023.3251417}
 \end{botherref}
 \endbibitem
 
@@ -94,14 +94,14 @@ In: \bbtitle{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision
 \endbibitem
 
 %%% 5
-\bibitem[\protect\citeauthoryear{Chen et~al.}{2024}]{ASingle32}
+\bibitem[\protect\citeauthoryear{Chen et~al.}{2027}]{ASingle32}
 \begin{botherref}
 \oauthor{\bsnm{Chen}, \binits{J.}}, et al.:
 {A Single Simple Patch is All You Need for AI-generated Image Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/A-Single-Simple-Patch-is-All-You-Need-for-Image-Chen-Yao/7d68d27a0d313e5a433442e7f5ffcac44659133e?utm_source=direct_link}
-(2024)
+Information Processing \& Management
+(2027).
+doi: 10.1016/j.ipm.2026.105058. Available:
+  \url{https://doi.org/10.1016/j.ipm.2026.105058}
 \end{botherref}
 \endbibitem
 
@@ -111,11 +111,11 @@ Available:
 \begin{bchapter}
 \bauthor{\bsnm{Karageorgiou}, \binits{D.}}, \betal:
 \bctitle{{Any-Resolution AI-Generated Image Detection by Spectral Learning}}.
-In: \bbtitle{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition
-  (CVPR)}
+In: \bbtitle{2025 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}
 (\byear{2025}).
-\bcomment{Available:
-  \url{https://www.semanticscholar.org/paper/Any-Resolution-AI-Generated-Image-Detection-by-Karageorgiou-Papadopoulos/9de990b0cbb82bd39d8ef9a5f445cceeabba4e0d?utm_source=direct_link}}
+\bcomment{doi: 10.1109/cvpr52734.2025.01743. Available:
+  \url{https://doi.org/10.1109/cvpr52734.2025.01743}}
 \end{bchapter}
 \endbibitem
 
@@ -152,22 +152,24 @@ Available:
 \oauthor{\bsnm{Meng}, \binits{Z.}}, et al.:
 {ARTIFACT FEATURE PURIFICATION FOR CROSS-DOMAIN DETECTION OF AI-GENERATED
   IMAGES}.
-arXiv preprint.
-Available: \url{https://arxiv.org/pdf/2403.11172}
-(2024)
+Computer Vision and Image Understanding
+(2024).
+doi: 10.1016/j.cviu.2024.104078. Available:
+  \url{https://doi.org/10.1016/j.cviu.2024.104078}
 \end{botherref}
 \endbibitem
 
 %%% 10
-\bibitem[\protect\citeauthoryear{Li et~al.}{2024}]{ImprovingSynthetic24}
+\bibitem[\protect\citeauthoryear{Li et~al.}{2025}]{ImprovingSynthetic24}
 \begin{bchapter}
 \bauthor{\bsnm{Li}, \binits{O.}}, \betal:
 \bctitle{{Improving Synthetic Image Detection Towards Generalization: An Image
   Transformation Perspective}}.
-In: \bbtitle{Proc. ACM Web Conf. (WWW)}
-(\byear{2024}).
-\bcomment{Available:
-  \url{https://www.semanticscholar.org/paper/Improving-Synthetic-Image-Detection-Towards-An-Li-Cai/5de601f650f36838194b440692f7725dddbbf9ce?utm_source=direct_link}}
+In: \bbtitle{Proceedings of the 31st ACM SIGKDD Conference on Knowledge
+  Discovery and Data Mining V.1}
+(\byear{2025}).
+\bcomment{doi: 10.1145/3690624.3709392. Available:
+  \url{https://doi.org/10.1145/3690624.3709392}}
 \end{bchapter}
 \endbibitem
 
@@ -177,10 +179,10 @@ In: \bbtitle{Proc. ACM Web Conf. (WWW)}
 \oauthor{\bsnm{Ashani}, \binits{Z.N.}}, et al.:
 {Comparative Analysis of Deepfake Image Detection Method Using VGG16, VGG19 and
   ResNet50}.
-J. Adv. Res. Applied Sciences and Engineering Technology
+Journal of Advanced Research in Applied Sciences and Engineering Technology
 (2024).
-Available:
-  \url{https://www.semanticscholar.org/paper/Comparative-Analysis-of-Deepfake-Image-Detection-Ashani-Syafidza/aa57289cf54e84d413412cef607be47d055a4fc8?utm_source=direct_link}
+doi: 10.37934/araset.47.1.1628. Available:
+  \url{https://doi.org/10.37934/araset.47.1.1628}
 \end{botherref}
 \endbibitem
 
@@ -189,48 +191,52 @@ Available:
 \begin{botherref}
 \oauthor{\bsnm{Zheng}, \binits{C.}}, et al.:
 {Breaking Semantic Artifacts for Generalized AI-generated Image Detection}.
-preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/Breaking-Semantic-Artifacts-for-Generalized-Image-Zheng-Lin/626829e1ecf7e8541b695e4de61af891c2fd77b1?utm_source=direct_link}
-(2024)
+Advances in Neural Information Processing Systems 37
+(2024).
+doi: 10.52202/079017-1903. Available:
+  \url{https://doi.org/10.52202/079017-1903}
 \end{botherref}
 \endbibitem
 
 %%% 13
-\bibitem[\protect\citeauthoryear{Li et~al.}{2024}]{MultipleContexts52}
+\bibitem[\protect\citeauthoryear{Li et~al.}{2026}]{MultipleContexts52}
 \begin{botherref}
 \oauthor{\bsnm{Li}, \binits{Z.}}, et al.:
 {. Multiple Contexts and Frequencies Aggregation Network forDeepfake
   Detection}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2408.01668}
-(2024)
+PLOS One
+(2026).
+doi: 10.1371/journal.pone.0337409. Available:
+  \url{https://doi.org/10.1371/journal.pone.0337409}
 \end{botherref}
 \endbibitem
 
 %%% 14
 \bibitem[\protect\citeauthoryear{Bhattacharjee
-  et~al.}{2025}]{CaenetGeneralized55}
+  et~al.}{2026}]{CaenetGeneralized55}
 \begin{botherref}
 \oauthor{\bsnm{Bhattacharjee}, \binits{A.}}, et al.:
 {CAE-Net: Generalized Deepfake Image Detection using Convolution and Attention
   Mechanisms with Spatial and Frequency Domain Features}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2502.10682}
-(2025)
+Journal of Visual Communication and Image Representation
+(2026).
+doi: 10.1016/j.jvcir.2025.104679. Available:
+  \url{https://doi.org/10.1016/j.jvcir.2025.104679}
 \end{botherref}
 \endbibitem
 
 %%% 15
-\bibitem[\protect\citeauthoryear{Ojha et~al.}{2024}]{TowardsUniversal19}
-\begin{botherref}
-\oauthor{\bsnm{Ojha}, \binits{U.}}, et al.:
-{Towards Universal Fake Image Detectors that Generalize Across Generative
-  Models}.
-arXiv preprint.
-Available: \url{https://arxiv.org/pdf/2302.10174}
-(2024)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Ojha et~al.}{2023}]{TowardsUniversal19}
+\begin{bchapter}
+\bauthor{\bsnm{Ojha}, \binits{U.}}, \betal:
+\bctitle{{Towards Universal Fake Image Detectors that Generalize Across
+  Generative Models}}.
+In: \bbtitle{2023 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}
+(\byear{2023}).
+\bcomment{doi: 10.1109/cvpr52729.2023.02345. Available:
+  \url{https://doi.org/10.1109/cvpr52729.2023.02345}}
+\end{bchapter}
 \endbibitem
 
 %%% 16
@@ -241,35 +247,33 @@ Available: \url{https://arxiv.org/pdf/2302.10174}
 \oauthor{\bsnm{Papadopoulos}, \binits{S.}}, et al.:
 {Leveraging Representations from Intermediate Encoder-blocks for Synthetic
   Image Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/Leveraging-Representations-from-Intermediate-for-Koutlis-Papadopoulos/7020139666d01234f0f622fc27ca9d0cdb4e368c?utm_source=direct_link}
-(2024)
+Lecture Notes in Computer Science
+(2024).
+doi: 10.1007/978-3-031-73220-1\_23. Available:
+  \url{https://doi.org/10.1007/978-3-031-73220-1_23}
 \end{botherref}
 \endbibitem
 
 %%% 17
-\bibitem[\protect\citeauthoryear{Yan et~al.}{2024}]{OrthogonalSubspace22}
+\bibitem[\protect\citeauthoryear{Yan et~al.}{2026}]{OrthogonalSubspace22}
 \begin{botherref}
 \oauthor{\bsnm{Yan}, \binits{Z.}}, et al.:
 {Orthogonal Subspace Decomposition for Generalizable AI-Generated Image
   Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/Orthogonal-Subspace-Decomposition-for-Generalizable-Yan-Wang/e7c9a171bdc2bc083d416cf7960b336d2c7fb0ab?utm_source=direct_link}
-(2024)
+Al-Noor Journal of Engineering Management and Computer Science
+(2026).
+doi: 10.71229/4kj12980. Available: \url{https://doi.org/10.71229/4kj12980}
 \end{botherref}
 \endbibitem
 
 %%% 18
-\bibitem[\protect\citeauthoryear{Keita et~al.}{2024}]{BiloraA25}
+\bibitem[\protect\citeauthoryear{Keita et~al.}{2025}]{BiloraA25}
 \begin{botherref}
 \oauthor{\bsnm{Keita}, \binits{M.}}, et al.:
 {Bi‐LORA: A Vision‐Language Approach for Synthetic Image Detection}.
 Expert Systems
-(2024).
-Available:
-  \url{https://www.semanticscholar.org/paper/Bi\%E2\%80\%90LORA\%3A-A-Vision\%E2\%80\%90Language-Approach-for-Synthetic-Keita-Hamidouche/6d6882e973977477e978ac6e5071eb4277aff7a9?utm_source=direct_link}
+(2025).
+doi: 10.1111/exsy.13829. Available: \url{https://doi.org/10.1111/exsy.13829}
 \end{botherref}
 \endbibitem
 
@@ -287,27 +291,27 @@ In: \bbtitle{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}
 \endbibitem
 
 %%% 20
-\bibitem[\protect\citeauthoryear{Yan et~al.}{2024}]{ASanity21}
+\bibitem[\protect\citeauthoryear{Yan et~al.}{1994}]{ASanity21}
 \begin{botherref}
 \oauthor{\bsnm{Yan}, \binits{S.}}, et al.:
 {A Sanity Check for AI-generated Image Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/A-Sanity-Check-for-AI-generated-Image-Detection-Yan-Li/cd39206c3227afa98887043c134679057cfcab54}
-(2024)
+Scientific American
+(1994).
+doi: 10.1038/scientificamerican0694-19. Available:
+  \url{https://doi.org/10.1038/scientificamerican0694-19}
 \end{botherref}
 \endbibitem
 
 %%% 21
-\bibitem[\protect\citeauthoryear{He et~al.}{2024}]{RigidA30}
+\bibitem[\protect\citeauthoryear{He et~al.}{2026}]{RigidA30}
 \begin{botherref}
 \oauthor{\bsnm{He}, \binits{Z.}}, et al.:
 {RIGID: A Training-free and Model-Agnostic Framework for Robust AI-Generated
   Image Detection}.
 arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/RIGID\%3A-A-Training-free-and-Model-Agnostic-Framework-He-Chen/be0c1080f11f913ca58279a92db0764dbd97ada8?utm_source=direct_link}
-(2024)
+doi: 10.2139/ssrn.6993497. Available:
+  \url{https://doi.org/10.2139/ssrn.6993497}
+(2026)
 \end{botherref}
 \endbibitem
 
@@ -368,21 +372,24 @@ In: \bbtitle{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}
 \oauthor{\bsnm{Wen}, \binits{S.}}, et al.:
 {Spot the Fake: Large Multimodal Model-Based Synthetic Image Detection with
   Artifact Explanation}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2503.14905}
-(2025)
+Advances in Neural Information Processing Systems 38
+(2025).
+doi: 10.52202/085713-1974. Available:
+  \url{https://doi.org/10.52202/085713-1974}
 \end{botherref}
 \endbibitem
 
 %%% 27
-\bibitem[\protect\citeauthoryear{Wu et~al.}{2025}]{ExplainableSynthetic59}
-\begin{botherref}
-\oauthor{\bsnm{Wu}, \binits{Y.}}, et al.:
-{Explainable Synthetic Image Detection through Diffusion Timestep Ensembling}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2503.06201}
-(2025)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Wu et~al.}{2026}]{ExplainableSynthetic59}
+\begin{bchapter}
+\bauthor{\bsnm{Wu}, \binits{Y.}}, \betal:
+\bctitle{{Explainable Synthetic Image Detection through Diffusion Timestep
+  Ensembling}}.
+In: \bbtitle{Proceedings of the AAAI Conference on Artificial Intelligence}
+(\byear{2026}).
+\bcomment{doi: 10.1609/aaai.v40i13.38060. Available:
+  \url{https://doi.org/10.1609/aaai.v40i13.38060}}
+\end{bchapter}
 \endbibitem
 
 %%% 28
@@ -398,13 +405,13 @@ In: \bbtitle{Proc. ACM SIGSAC Conf. Computer and Communications Security (CCS)}
 \endbibitem
 
 %%% 29
-\bibitem[\protect\citeauthoryear{Jin et~al.}{2024}]{ExplainableAi48}
+\bibitem[\protect\citeauthoryear{Jin et~al.}{2025}]{ExplainableAi48}
 \begin{botherref}
 \oauthor{\bsnm{Jin}, \binits{J.}}, et al.:
 {Explainable AI for DeepFake Detection}.
 Applied Sciences
-(2024).
-Available: \url{https://www.mdpi.com/2076-3417/15/2/725}
+(2025).
+doi: 10.3390/app15020725. Available: \url{https://doi.org/10.3390/app15020725}
 \end{botherref}
 \endbibitem
 
@@ -421,26 +428,27 @@ In: \bbtitle{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}
 \endbibitem
 
 %%% 31
-\bibitem[\protect\citeauthoryear{Li et~al.}{2024}]{DynamicSpatialtemporal50}
+\bibitem[\protect\citeauthoryear{Li et~al.}{2026}]{DynamicSpatialtemporal50}
 \begin{botherref}
 \oauthor{\bsnm{Li}, \binits{J.}}, et al.:
 {Dynamic Spatial-Temporal Inconsistency Learning for General Deepfake Detection
   in Visual Understanding}.
 Mathematics
-(2024).
-Available: \url{https://www.mdpi.com/2227-7390/14/10/1612}
+(2026).
+doi: 10.3390/math14101612. Available:
+  \url{https://doi.org/10.3390/math14101612}
 \end{botherref}
 \endbibitem
 
 %%% 32
-\bibitem[\protect\citeauthoryear{Chen et~al.}{2024}]{TowardsGeneralizable49}
+\bibitem[\protect\citeauthoryear{Chen et~al.}{2026}]{TowardsGeneralizable49}
 \begin{botherref}
 \oauthor{\bsnm{Chen}, \binits{H.}}, et al.:
 {Towards Generalizable Deepfake Detection via Facial Landmark-Guided
   Convolution and Local Structure Awareness}.
 Algorithms
-(2024).
-Available: \url{https://www.mdpi.com/1999-4893/19/4/270}
+(2026).
+doi: 10.3390/a19040270. Available: \url{https://doi.org/10.3390/a19040270}
 \end{botherref}
 \endbibitem
 
@@ -486,10 +494,10 @@ In: \bbtitle{Proc. AAAI Conf. Artificial Intelligence}
 \oauthor{\bsnm{Alfarouk}, \binits{O.}}, et al.:
 {A Hybrid CNN-LSTM Approach for Precision Deepfake Image Detection Based on
   Transfer Learning}.
-preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/A-Hybrid-CNN-LSTM-Approach-for-Precision-Deepfake-Al-Dulaimi-Kurnaz/6f93ee7f63447603d200c71e57875a5a14d15be4?utm_source=direct_link}
-(2024)
+Electronics
+(2024).
+doi: 10.3390/electronics13091662. Available:
+  \url{https://doi.org/10.3390/electronics13091662}
 \end{botherref}
 \endbibitem
 
@@ -498,10 +506,10 @@ Available:
 \begin{botherref}
 \oauthor{\bsnm{Zhou}, \binits{X.}}, et al.:
 {Fine-Grained Open-Set Deepfake Detection via Unsupervised Domain Adaptation}.
-IEEE Trans. Information Forensics and Security
+IEEE Transactions on Information Forensics and Security
 (2024).
-Available:
-  \url{https://www.semanticscholar.org/paper/Fine-Grained-Open-Set-Deepfake-Detection-via-Domain-Zhou-Han/dcf0af5e1fc8c9419d550eaeb114f6cbeae0a4f2?utm_source=direct_link}
+doi: 10.1109/tifs.2024.3435440. Available:
+  \url{https://doi.org/10.1109/tifs.2024.3435440}
 \end{botherref}
 \endbibitem
 
@@ -510,23 +518,23 @@ Available:
 \begin{botherref}
 \oauthor{\bsnm{Zhang}, \binits{D.}}, et al.:
 {Face Forgery Detection via Multi-Feature Fusion and Local Enhancement}.
-IEEE Trans. Circuits and Systems for Video Technology
+IEEE Transactions on Circuits and Systems for Video Technology
 (2024).
-Available:
-  \url{https://www.semanticscholar.org/paper/Face-Forgery-Detection-via-Multi-Feature-Fusion-and-Zhang-Chen/f32c120f2e270021163587aff02b74746909cbdf?utm_source=direct_link}
+doi: 10.1109/tcsvt.2024.3390945. Available:
+  \url{https://doi.org/10.1109/tcsvt.2024.3390945}
 \end{botherref}
 \endbibitem
 
 %%% 39
-\bibitem[\protect\citeauthoryear{Kong et~al.}{2024}]{OpensetDeepfake40}
+\bibitem[\protect\citeauthoryear{Kong et~al.}{2026}]{OpensetDeepfake40}
 \begin{botherref}
 \oauthor{\bsnm{Kong}, \binits{C.}}, et al.:
 {Open-Set Deepfake Detection: A Parameter-Efficient Adaptation Method with
   Forgery Style Mixture}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/Open-Set-Deepfake-Detection\%3A-A-Parameter-Efficient-Kong-Luo/532692577525d43c30f06b85e3b1660ddbb5c1a4?utm_source=direct_link}
-(2024)
+IEEE Transactions on Circuits and Systems for Video Technology
+(2026).
+doi: 10.1109/tcsvt.2026.3669190. Available:
+  \url{https://doi.org/10.1109/tcsvt.2026.3669190}
 \end{botherref}
 \endbibitem
 
@@ -543,14 +551,15 @@ Available: \url{https://arxiv.org/abs/2503.11389}
 
 %%% 41
 \bibitem[\protect\citeauthoryear{Cai et~al.}{2025}]{DeepshieldFortifying61}
-\begin{botherref}
-\oauthor{\bsnm{Cai}, \binits{Y.}}, et al.:
-{DeepShield: Fortifying Deepfake Video Detection with Local and Global Forgery
-  Analysis}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2510.25237}
-(2025)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Cai}, \binits{Y.}}, \betal:
+\bctitle{{DeepShield: Fortifying Deepfake Video Detection with Local and Global
+  Forgery Analysis}}.
+In: \bbtitle{2025 IEEE/CVF International Conference on Computer Vision (ICCV)}
+(\byear{2025}).
+\bcomment{doi: 10.1109/iccv51701.2025.01164. Available:
+  \url{https://doi.org/10.1109/iccv51701.2025.01164}}
+\end{bchapter}
 \endbibitem
 
 %%% 42
@@ -566,63 +575,70 @@ In: \bbtitle{Proc. Int. Joint Conf. Artificial Intelligence (IJCAI)}
 \endbibitem
 
 %%% 43
-\bibitem[\protect\citeauthoryear{Yan et~al.}{2023}]{DeepfakebenchA4}
-\begin{botherref}
-\oauthor{\bsnm{Yan}, \binits{Z.}}, et al.:
-{DeepfakeBench: A comprehensive benchmark of Deepfake Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/reader/dc95e09ca68d946a4ff2ff007e93aa8b836bd9d1}
-(2023)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Yan et~al.}{2025}]{DeepfakebenchA4}
+\begin{bchapter}
+\bauthor{\bsnm{Yan}, \binits{Z.}}, \betal:
+\bctitle{{DeepfakeBench: A comprehensive benchmark of Deepfake Detection}}.
+In: \bbtitle{2025 International Conference on Emerging Technologies and
+  Innovation for Sustainability (EmergIN)}
+(\byear{2025}).
+\bcomment{doi: 10.1109/emergin67762.2025.11450721. Available:
+  \url{https://doi.org/10.1109/emergin67762.2025.11450721}}
+\end{bchapter}
 \endbibitem
 
 %%% 44
 \bibitem[\protect\citeauthoryear{Shi et~al.}{2025}]{TowardsRealworld56}
-\begin{botherref}
-\oauthor{\bsnm{Shi}, \binits{J.}}, et al.:
-{Towards Real-World Deepfake Detection: A Diverse In-the-wild Dataset of
-  Forgery Faces}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2510.08067}
-(2025)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Shi}, \binits{J.}}, \betal:
+\bctitle{{Towards Real-World Deepfake Detection: A Diverse In-the-wild Dataset
+  of Forgery Faces}}.
+In: \bbtitle{2025 International Conference on Intelligent and Secure
+  Engineering Solutions (CISES)}
+(\byear{2025}).
+\bcomment{doi: 10.1109/cises66934.2025.11265620. Available:
+  \url{https://doi.org/10.1109/cises66934.2025.11265620}}
+\end{bchapter}
 \endbibitem
 
 %%% 45
-\bibitem[\protect\citeauthoryear{Hong et~al.}{2024}]{WildfakeA66}
-\begin{botherref}
-\oauthor{\bsnm{Hong}, \binits{Y.}}, et al.:
-{WildFake: A Large-scale Challenging Dataset for AI-Generated Images
-  Detection}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/WildFake\%3A-A-Large-scale-Challenging-Dataset-for-Hong-Zhang/22629e2ecacb3381c005f7643a4355b502d59464}
-(2024)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Hong et~al.}{2025}]{WildfakeA66}
+\begin{bchapter}
+\bauthor{\bsnm{Hong}, \binits{Y.}}, \betal:
+\bctitle{{WildFake: A Large-scale Challenging Dataset for AI-Generated Images
+  Detection}}.
+In: \bbtitle{Proceedings of the AAAI Conference on Artificial Intelligence}
+(\byear{2025}).
+\bcomment{doi: 10.1609/aaai.v39i4.32363. Available:
+  \url{https://doi.org/10.1609/aaai.v39i4.32363}}
+\end{bchapter}
 \endbibitem
 
 %%% 46
 \bibitem[\protect\citeauthoryear{Pellegrini et~al.}{2025}]{AigenbenchA72}
-\begin{botherref}
-\oauthor{\bsnm{Pellegrini}, \binits{L.}}, et al.:
-{AI-GenBench: A New Ongoing Benchmark for AI-Generated Image Detection}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2504.20865}
-(2025)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Pellegrini}, \binits{L.}}, \betal:
+\bctitle{{AI-GenBench: A New Ongoing Benchmark for AI-Generated Image
+  Detection}}.
+In: \bbtitle{2025 International Joint Conference on Neural Networks (IJCNN)}
+(\byear{2025}).
+\bcomment{doi: 10.1109/ijcnn64981.2025.11228377. Available:
+  \url{https://doi.org/10.1109/ijcnn64981.2025.11228377}}
+\end{bchapter}
 \endbibitem
 
 %%% 47
-\bibitem[\protect\citeauthoryear{Chandra et~al.}{2025}]{Deepfakeeval2024A64}
-\begin{botherref}
-\oauthor{\bsnm{Chandra}, \binits{N.A.}}, et al.:
-{Deepfake-Eval-2024: A Multi-Modal In-the-Wild Benchmark of Deepfakes
-  Circulated in 2024}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2503.02857}
-(2025)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Chandra et~al.}{2026}]{Deepfakeeval2024A64}
+\begin{bchapter}
+\bauthor{\bsnm{Chandra}, \binits{N.A.}}, \betal:
+\bctitle{{Deepfake-Eval-2024: A Multi-Modal In-the-Wild Benchmark of Deepfakes
+  Circulated in 2024}}.
+In: \bbtitle{2026 IEEE/CVF Winter Conference on Applications of Computer Vision
+  (WACV)}
+(\byear{2026}).
+\bcomment{doi: 10.1109/wacv61042.2026.00403. Available:
+  \url{https://doi.org/10.1109/wacv61042.2026.00403}}
+\end{bchapter}
 \endbibitem
 
 %%% 48
@@ -639,39 +655,40 @@ Available:
 \endbibitem
 
 %%% 49
-\bibitem[\protect\citeauthoryear{Boychev et~al.}{2024}]{ImaginetA60}
+\bibitem[\protect\citeauthoryear{Boychev et~al.}{2025}]{ImaginetA60}
 \begin{botherref}
 \oauthor{\bsnm{Boychev}, \binits{D.}}, et al.:
 {ImagiNet: A Multi-Content Benchmark for Synthetic Image Detection}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2407.20020}
-(2024)
+IEEE Access
+(2025).
+doi: 10.1109/access.2025.3561594. Available:
+  \url{https://doi.org/10.1109/access.2025.3561594}
 \end{botherref}
 \endbibitem
 
 %%% 50
-\bibitem[\protect\citeauthoryear{Grommelt et~al.}{2024}]{FakeOr35}
+\bibitem[\protect\citeauthoryear{Grommelt et~al.}{2025}]{FakeOr35}
 \begin{botherref}
 \oauthor{\bsnm{Grommelt}, \binits{P.}}, et al.:
 {Fake or JPEG? Revealing Common Biases in Generated Image Detection Datasets}.
-arXiv preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/Fake-or-JPEG-Revealing-Common-Biases-in-Generated-Grommelt-Weiss/b9d2596a0bf9fd4f6874cb774ce8b9aff219af4c?utm_source=direct_link}
-(2024)
+Lecture Notes in Computer Science
+(2025).
+doi: 10.1007/978-3-031-92089-9\_6. Available:
+  \url{https://doi.org/10.1007/978-3-031-92089-9_6}
 \end{botherref}
 \endbibitem
 
 %%% 51
 \bibitem[\protect\citeauthoryear{Abdullah et~al.}{2024}]{AnAnalysis36}
-\begin{botherref}
-\oauthor{\bsnm{Abdullah}, \binits{S.M.}}, et al.:
-{An Analysis of Recent Advances in Deepfake Image Detection in an Evolving
-  Threat Landscape}.
-preprint.
-Available:
-  \url{https://www.semanticscholar.org/paper/An-Analysis-of-Recent-Advances-in-Deepfake-Image-in-Abdullah-Cheruvu/63e1d03d504bda4ebc08c61ea3a531e983ae8726?utm_source=direct_link}
-(2024)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Abdullah}, \binits{S.M.}}, \betal:
+\bctitle{{An Analysis of Recent Advances in Deepfake Image Detection in an
+  Evolving Threat Landscape}}.
+In: \bbtitle{2024 IEEE Symposium on Security and Privacy (SP)}
+(\byear{2024}).
+\bcomment{doi: 10.1109/sp54263.2024.00194. Available:
+  \url{https://doi.org/10.1109/sp54263.2024.00194}}
+\end{bchapter}
 \endbibitem
 
 %%% 52
@@ -687,14 +704,14 @@ Available: \url{https://arxiv.org/abs/2410.01575}
 
 %%% 53
 \bibitem[\protect\citeauthoryear{Abbasi
-  et~al.}{2024}]{ComprehensiveEvaluation46}
+  et~al.}{2025}]{ComprehensiveEvaluation46}
 \begin{botherref}
 \oauthor{\bsnm{Abbasi}, \binits{M.}}, et al.:
 {Comprehensive Evaluation of Deepfake Detection Models: Accuracy,
   Generalization, and Resilience to Adversarial Attacks}.
 Applied Sciences
-(2024).
-Available: \url{https://www.mdpi.com/2076-3417/15/3/1225}
+(2025).
+doi: 10.3390/app15031225. Available: \url{https://doi.org/10.3390/app15031225}
 \end{botherref}
 \endbibitem
 
@@ -717,47 +734,51 @@ In: \bbtitle{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}
 \bauthor{\bsnm{Guillaro}, \binits{F.}}, \betal:
 \bctitle{{A Bias-Free Training Paradigm for More General AI-generated Image
   Detection}}.
-In: \bbtitle{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition
-  (CVPR)}
+In: \bbtitle{2025 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}
 (\byear{2025}).
-\bcomment{Available:
-  \url{https://www.semanticscholar.org/paper/A-Bias-Free-Training-Paradigm-for-More-General-Guillaro-Zingarini/7bd8343e28a1c6adab29c721a08aee878fbf3ada?utm_source=direct_link}}
+\bcomment{doi: 10.1109/cvpr52734.2025.01741. Available:
+  \url{https://doi.org/10.1109/cvpr52734.2025.01741}}
 \end{bchapter}
 \endbibitem
 
 %%% 56
 \bibitem[\protect\citeauthoryear{Lin et~al.}{2024}]{PreservingFairness62}
-\begin{botherref}
-\oauthor{\bsnm{Lin}, \binits{L.}}, et al.:
-{Preserving Fairness Generalization in Deepfake Detection}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2402.17229}
-(2024)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Lin}, \binits{L.}}, \betal:
+\bctitle{{Preserving Fairness Generalization in Deepfake Detection}}.
+In: \bbtitle{2024 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}
+(\byear{2024}).
+\bcomment{doi: 10.1109/cvpr52733.2024.01591. Available:
+  \url{https://doi.org/10.1109/cvpr52733.2024.01591}}
+\end{bchapter}
 \endbibitem
 
 %%% 57
-\bibitem[\protect\citeauthoryear{Salvi et~al.}{2024}]{ARobust11}
+\bibitem[\protect\citeauthoryear{Salvi et~al.}{2023}]{ARobust11}
 \begin{botherref}
 \oauthor{\bsnm{Salvi}, \binits{D.}}, et al.:
 {A Robust Approach to Multimodal Deepfake Detection}.
 Journal of Imaging
-(2024).
-Available: \url{https://www.mdpi.com/2313-433X/9/6/122}
+(2023).
+doi: 10.3390/jimaging9060122. Available:
+  \url{https://doi.org/10.3390/jimaging9060122}
 \end{botherref}
 \endbibitem
 
 %%% 58
 \bibitem[\protect\citeauthoryear{Katamneni
   et~al.}{2024}]{ContextualCrossmodal68}
-\begin{botherref}
-\oauthor{\bsnm{Katamneni}, \binits{V.S.}}, et al.:
-{Contextual Cross-Modal Attention for Audio-Visual Deepfake Detection and
-  Localization}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2408.01532}
-(2024)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Katamneni}, \binits{V.S.}}, \betal:
+\bctitle{{Contextual Cross-Modal Attention for Audio-Visual Deepfake Detection
+  and Localization}}.
+In: \bbtitle{2024 IEEE International Joint Conference on Biometrics (IJCB)}
+(\byear{2024}).
+\bcomment{doi: 10.1109/ijcb62174.2024.10744480. Available:
+  \url{https://doi.org/10.1109/ijcb62174.2024.10744480}}
+\end{bchapter}
 \endbibitem
 
 %%% 59
@@ -772,50 +793,57 @@ Available: \url{https://journal.esrgroups.org/jes/article/view/6126}
 \endbibitem
 
 %%% 60
-\bibitem[\protect\citeauthoryear{Song et~al.}{2024}]{RobustnessAnd7}
+\bibitem[\protect\citeauthoryear{Song et~al.}{2026}]{RobustnessAnd7}
 \begin{botherref}
 \oauthor{\bsnm{Song}, \binits{H.}}, et al.:
 {Robustness and Generalizability of Deepfake Detection: A Study with Diffusion
   Models}.
-arXiv preprint.
-Available: \url{https://arxiv.org/pdf/2309.02218}
-(2024)
+Journal on Artificial Intelligence
+(2026).
+doi: 10.32604/jai.2026.078014. Available:
+  \url{https://doi.org/10.32604/jai.2026.078014}
 \end{botherref}
 \endbibitem
 
 %%% 61
 \bibitem[\protect\citeauthoryear{Bhattacharyya
   et~al.}{2024}]{DiffusionDeepfake70}
-\begin{botherref}
-\oauthor{\bsnm{Bhattacharyya}, \binits{C.}}, et al.:
-{Diffusion Deepfake}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2404.01579}
-(2024)
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Bhattacharyya}, \binits{C.}}, \betal:
+\bctitle{{Diffusion Deepfake}}.
+In: \bbtitle{2024 IEEE International Workshop on Information Forensics and
+  Security (WIFS)}
+(\byear{2024}).
+\bcomment{doi: 10.1109/wifs61860.2024.10810708. Available:
+  \url{https://doi.org/10.1109/wifs61860.2024.10810708}}
+\end{bchapter}
 \endbibitem
 
 %%% 62
-\bibitem[\protect\citeauthoryear{Ricker et~al.}{2022}]{TowardsThe71}
-\begin{botherref}
-\oauthor{\bsnm{Ricker}, \binits{J.}}, et al.:
-{Towards the Detection of Diffusion Model Deepfakes}.
-arXiv preprint.
-Available: \url{https://arxiv.org/abs/2210.14571}
-(2022)
-\end{botherref}
+\bibitem[\protect\citeauthoryear{Ricker et~al.}{2024}]{TowardsThe71}
+\begin{bchapter}
+\bauthor{\bsnm{Ricker}, \binits{J.}}, \betal:
+\bctitle{{Towards the Detection of Diffusion Model Deepfakes}}.
+In: \bbtitle{Proceedings of the 19th International Joint Conference on Computer
+  Vision, Imaging and Computer Graphics Theory and Applications}
+(\byear{2024}).
+\bcomment{doi: 10.5220/0012422000003660. Available:
+  \url{https://doi.org/10.5220/0012422000003660}}
+\end{bchapter}
 \endbibitem
 
 %%% 63
 \bibitem[\protect\citeauthoryear{Bi et~al.}{2020}]{Deep3DCaptureExcluded}
-\begin{botherref}
-\oauthor{\bsnm{Bi}, \binits{S.}}, et al.:
-{Deep 3D Capture: Geometry and Reflectance from Sparse Multi-View Images}.
-arXiv preprint
-(2020).
-Excluded (off-topic, background reference only). Available:
-  \url{https://www.semanticscholar.org/reader/05b63813015637d66bbc357bffdbbfd10bdc9972}
-\end{botherref}
+\begin{bchapter}
+\bauthor{\bsnm{Bi}, \binits{S.}}, \betal:
+\bctitle{{Deep 3D Capture: Geometry and Reflectance from Sparse Multi-View
+  Images}}.
+In: \bbtitle{2020 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}
+(\byear{2020}).
+\bcomment{doi: 10.1109/cvpr42600.2020.00600. Available:
+  \url{https://doi.org/10.1109/cvpr42600.2020.00600}}
+\end{bchapter}
 \endbibitem
 
 %%% 64
@@ -851,8 +879,8 @@ Excluded from primary synthesis (secondary review). Available:
   and Fusion Methods}.
 Electronics
 (2023).
-Excluded from primary synthesis (secondary review). Available:
-  \url{https://api.semanticscholar.org/CorpusID:266585635}
+doi: 10.3390/electronics13010095. Available:
+  \url{https://doi.org/10.3390/electronics13010095}
 \end{botherref}
 \endbibitem
 
